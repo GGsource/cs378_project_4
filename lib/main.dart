@@ -1,3 +1,4 @@
+import 'package:cs378_project_4/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,41 +11,36 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Center Text',
+      home: Scaffold(
+          body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.amber.shade200, Colors.amber.shade800],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
-          ],
-        ),
-      ),
+          ),
+          CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                title: const Text("Project 4"),
+                centerTitle: true,
+                pinned: true,
+                backgroundColor: Colors.amber.shade200,
+                expandedHeight: 150,
+              ),
+              SliverAppBar(
+                title: const Text("Flutter Charts Package"),
+                backgroundColor: Colors.amber.shade300,
+              ),
+              const SliverToBoxAdapter(child: ChartPage()),
+            ],
+          ),
+        ],
+      )),
     );
   }
 }

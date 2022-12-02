@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
               // Screen 1
               BeeChart(),
               // Screen 2
-              MusicPage(),
+              AudioPage(),
             ],
           ),
         ),

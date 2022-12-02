@@ -1,3 +1,4 @@
+import 'package:cs378_project_4/audio_page.dart';
 import 'package:cs378_project_4/bee_page.dart';
 import 'package:flutter/material.dart';
 
@@ -16,26 +17,32 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             toolbarHeight: 0,
-            backgroundColor: Colors.amber.shade700,
-            bottom: const TabBar(
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.amber.shade700, Colors.green])),
+            ),
+            bottom: TabBar(
               tabs: [
                 Tab(
-                  icon: Icon(Icons.hexagon_rounded),
+                  icon:
+                      Icon(Icons.hexagon_rounded, color: Colors.amber.shade900),
                 ),
                 Tab(
-                  icon: Icon(Icons.female_rounded),
+                  icon: Icon(
+                    Icons.play_arrow_rounded,
+                    color: Colors.green.shade900,
+                  ),
                 ),
               ],
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: [
               // Screen 1
-              const BeeChart(),
+              BeeChart(),
               // Screen 2
-              Container(
-                color: Colors.green,
-              )
+              MusicPage(),
             ],
           ),
         ),

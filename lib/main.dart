@@ -25,12 +25,14 @@ class MyApp extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(
-                  icon:
-                      Icon(Icons.hexagon_rounded, color: Colors.amber.shade900),
+                  icon: Icon(
+                    Icons.hexagon_rounded,
+                    color: Colors.amber.shade900,
+                  ),
                 ),
                 Tab(
                   icon: Icon(
-                    Icons.play_arrow_rounded,
+                    Icons.audiotrack_rounded,
                     color: Colors.green.shade900,
                   ),
                 ),

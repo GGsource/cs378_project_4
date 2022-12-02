@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cs378_project_4/player_panel.dart';
 import 'package:flutter/material.dart';
 
 class AudioPage extends StatefulWidget {
@@ -69,134 +70,13 @@ class _AudioPageState extends State<AudioPage> {
           ),
 
           // Body of screen
-          audioCard(
-              path: "Stal.mp3",
+          const PlayerPanel(
+              audioPath: "audio/Stal.mp3",
+              imagePath: "assets/images/Stal.jpg",
               title: "Stal",
               artist: "C418",
               swatch: Colors.amber),
-          ElevatedButton(
-              onPressed: () {
-                final audioPlayer = AudioPlayer();
-                audioPlayer.play(AssetSource("ye.m4a"));
-              },
-              child: Text("Test Audio"))
         ],
-      ),
-    );
-  }
-
-  Widget audioCard({
-    required String path,
-    required String title,
-    required String artist,
-    required MaterialColor swatch,
-  }) {
-    final AudioPlayer audio = AudioPlayer();
-    bool isPlaying = false;
-    Icon play = const Icon(Icons.play_arrow_rounded);
-    Icon pause = const Icon(Icons.pause_rounded);
-    Icon currentIcon = play;
-    Duration duration = Duration.zero;
-    Duration position = Duration.zero;
-
-    audio.onPlayerStateChanged.listen((state) {
-      setState(() {
-        isPlaying = state == PlayerState.playing;
-        if (isPlaying) {
-          currentIcon = pause;
-        } else {
-          currentIcon = play;
-        }
-      });
-    });
-    audio.onDurationChanged.listen((newDuration) {
-      setState(() {
-        duration = newDuration;
-      });
-    });
-    audio.onPositionChanged.listen((newPosition) {
-      setState(() {
-        position = newPosition;
-      });
-    });
-
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 200,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [swatch.shade300, swatch.shade700]),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Wrap(
-                alignment: WrapAlignment.center,
-                direction: Axis.horizontal,
-                spacing: 70,
-                children: [
-                  Container(
-                    width: 110,
-                    height: 110,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/Stal.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    // color: swatch.shade900,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    child: Column(
-                      children: [
-                        Text(
-                          title,
-                          textScaleFactor: 2,
-                          style: TextStyle(color: swatch.shade900),
-                        ),
-                        Text(
-                          "by $artist",
-                          style: TextStyle(color: swatch.shade900),
-                        ),
-                        IconButton(
-                          onPressed: () async {
-                            if (isPlaying) {
-                              await audio.pause();
-                            } else {
-                              await audio.play(AssetSource(path));
-                            }
-                          },
-                          icon: currentIcon,
-                          iconSize: 50,
-                          color: swatch.shade900,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Slider(
-                min: 0,
-                max: duration.inSeconds.toDouble(),
-                value: position.inSeconds.toDouble(),
-                onChanged: (val) async {},
-                thumbColor: swatch.shade900,
-                activeColor: swatch,
-                inactiveColor: swatch.shade200,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(position.inMinutes.toString()),
-                  Text(duration.inMinutes.toString()),
-                ],
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

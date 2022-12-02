@@ -74,6 +74,12 @@ class _AudioPageState extends State<AudioPage> {
               title: "Stal",
               artist: "C418",
               swatch: Colors.amber),
+          ElevatedButton(
+              onPressed: () {
+                final audioPlayer = AudioPlayer();
+                audioPlayer.play(AssetSource("ye.m4a"));
+              },
+              child: Text("Test Audio"))
         ],
       ),
     );
@@ -85,7 +91,7 @@ class _AudioPageState extends State<AudioPage> {
     required String artist,
     required MaterialColor swatch,
   }) {
-    AudioPlayer audio = AudioPlayer();
+    final AudioPlayer audio = AudioPlayer();
     bool isPlaying = false;
     Icon play = const Icon(Icons.play_arrow_rounded);
     Icon pause = const Icon(Icons.pause_rounded);

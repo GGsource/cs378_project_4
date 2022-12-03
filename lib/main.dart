@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const MaterialColor firstColor = Colors.amber;
+    const MaterialColor secondColor = Colors.green;
     return MaterialApp(
       home: DefaultTabController(
         length: 2,
@@ -18,22 +20,21 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             toolbarHeight: 0,
             flexibleSpace: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.amber.shade700, Colors.green])),
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(colors: [firstColor, secondColor])),
             ),
             bottom: TabBar(
               tabs: [
                 Tab(
                   icon: Icon(
                     Icons.hexagon_rounded,
-                    color: Colors.amber.shade900,
+                    color: firstColor.shade900,
                   ),
                 ),
                 Tab(
                   icon: Icon(
                     Icons.audiotrack_rounded,
-                    color: Colors.green.shade900,
+                    color: secondColor.shade900,
                   ),
                 ),
               ],
@@ -42,13 +43,14 @@ class MyApp extends StatelessWidget {
           body: const TabBarView(
             children: [
               // Screen 1
-              BeeChart(),
+              BeeChart(swatch: firstColor),
               // Screen 2
-              AudioPage(),
+              AudioPage(swatch: secondColor),
             ],
           ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -4,7 +4,8 @@ import 'bar_chart_data.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class BeeChart extends StatelessWidget {
-  const BeeChart({super.key});
+  final MaterialColor swatch;
+  const BeeChart({super.key, required this.swatch});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class BeeChart extends StatelessWidget {
               gradient: LinearGradient(
                 colors: [
                   Colors.black,
-                  Colors.amber.shade900,
+                  swatch.shade900,
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -43,8 +44,8 @@ class BeeChart extends StatelessWidget {
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.amber.shade900,
-                        Colors.amber.shade700,
+                        swatch.shade900,
+                        swatch.shade700,
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
@@ -59,22 +60,22 @@ class BeeChart extends StatelessWidget {
                       color: Colors.white,
                       shadows: [
                         Shadow(
-                          color: Colors.amber.shade900,
+                          color: swatch.shade900,
                           offset: const Offset(2, 2),
                           blurRadius: 2,
                         ),
                         Shadow(
-                          color: Colors.amber.shade900,
+                          color: swatch.shade900,
                           offset: const Offset(-2, -2),
                           blurRadius: 2,
                         ),
                         Shadow(
-                          color: Colors.amber.shade900,
+                          color: swatch.shade900,
                           offset: const Offset(-2, 2),
                           blurRadius: 2,
                         ),
                         Shadow(
-                          color: Colors.amber.shade900,
+                          color: swatch.shade900,
                           offset: const Offset(2, -2),
                           blurRadius: 2,
                         ),
@@ -100,11 +101,11 @@ class BeeChart extends StatelessWidget {
               Container(
                 height: 230,
                 decoration: BoxDecoration(
-                    color: Colors.amber.shade600,
+                    color: swatch.shade600,
                     gradient: LinearGradient(
                       colors: [
-                        Colors.amber.shade700,
-                        Colors.amber.shade900,
+                        swatch.shade700,
+                        swatch.shade900,
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,

@@ -78,13 +78,11 @@ class _PlayerPanelState extends State<PlayerPanel> {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              Wrap(
-                alignment: WrapAlignment.center,
-                direction: Axis.horizontal,
-                spacing: 70,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: 100,
@@ -94,36 +92,42 @@ class _PlayerPanelState extends State<PlayerPanel> {
                         image: AssetImage(widget.imagePath),
                         fit: BoxFit.cover,
                       ),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     // color: swatch.shade900,
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        widget.title,
-                        textScaleFactor: 2,
-                        style: TextStyle(color: widget.swatch.shade900),
-                      ),
-                      Text(
-                        "by ${widget.artist}",
-                        style: TextStyle(color: widget.swatch.shade900),
-                      ),
-                      IconButton(
-                        onPressed: () async {
-                          if (isPlaying) {
-                            await audio.pause();
-                          } else {
-                            await audio.resume();
-                            // await audio.play(AssetSource(path));
-                          }
-                        },
-                        icon: isPlaying
-                            ? const Icon(Icons.pause_rounded)
-                            : const Icon(Icons.play_arrow_rounded),
-                        iconSize: 40,
-                        color: widget.swatch.shade900,
-                      ),
-                    ],
+                  SizedBox(
+                    width: 260,
+                    child: Column(
+                      children: [
+                        Text(
+                          widget.title,
+                          style: TextStyle(
+                              color: widget.swatch.shade900,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
+                        ),
+                        Text(
+                          "by ${widget.artist}",
+                          style: TextStyle(color: widget.swatch.shade900),
+                        ),
+                        IconButton(
+                          onPressed: () async {
+                            if (isPlaying) {
+                              await audio.pause();
+                            } else {
+                              await audio.resume();
+                              // await audio.play(AssetSource(path));
+                            }
+                          },
+                          icon: isPlaying
+                              ? const Icon(Icons.pause_rounded)
+                              : const Icon(Icons.play_arrow_rounded),
+                          iconSize: 40,
+                          color: widget.swatch.shade900,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

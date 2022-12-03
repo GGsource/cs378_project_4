@@ -140,7 +140,7 @@ class _PlayerPanelState extends State<PlayerPanel> {
                   await audio.seek(position);
                 },
                 thumbColor: widget.swatch.shade900,
-                activeColor: widget.swatch,
+                activeColor: widget.swatch.shade700,
                 inactiveColor: widget.swatch.shade200,
               ),
               Padding(

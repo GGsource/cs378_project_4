@@ -115,7 +115,7 @@ class BeeChart extends StatelessWidget {
                 child: const Padding(
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "Charts_Flutter, as the name implies, allows you to use a variety of charts to display data and even animate how it shows up. Here I have made a graph plotting what the Bee population would be today if I had been elected as World Dictator in 2010 at the impressive age of 12. Y axis is in trillions of bees.",
+                    "Charts_Flutter, as the name implies, allows you to use a variety of charts to display data and even animate how it shows up. Here I have made a graph plotting what the Bee population would be today if I had been elected as World Dictator in 2012 at the impressive age of 10. Y axis is in trillions of bees.",
                     style: TextStyle(height: 2.3, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
